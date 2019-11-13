@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:workflow xmlns:ns2="http://vmware.com/vco/workflow" root-name="item1" object-name="workflow:name=generic" id="64432d3c-c084-4261-87b7-d49e8b4aa885" editor-version="2.0" version="0.0.1" api-version="6.0.0" restartMode="1" resumeFromFailedMode="0">
+    <display-name>my new workflow</display-name>
+    <position y="65.0" x="50.0"/>
+    <input/>
+    <output/>
+    <attrib name="name" type="string">
+        <value encoded="n">Etopin</value>
+    </attrib>
+    <workflow-item name="item0" type="end" end-mode="0" comparator="0">
+        <position y="10.0" x="570.0"/>
+    </workflow-item>
+    <workflow-item name="item1" out-name="item3" type="task" business-status="" comparator="0">
+        <display-name>test</display-name>
+        <script encoded="false">System.log(name)
+name = "toto"
+System.log(name)</script>
+        <in-binding>
+            <bind name="name" type="string" export-name="name"/>
+        </in-binding>
+        <out-binding>
+            <bind name="name" type="string" export-name="name"/>
+        </out-binding>
+        <description>Simple task with custom script capability.</description>
+        <position y="75.0" x="140.0"/>
+    </workflow-item>
+    <workflow-item name="item2" type="end" end-mode="0" comparator="0">
+        <position y="65.0" x="570.0"/>
+    </workflow-item>
+    <workflow-item name="item3" out-name="item4" alt-out-name="item5" type="custom-condition" comparator="0">
+        <display-name>Name = toto ?</display-name>
+        <script encoded="false">return (name == "toto")</script>
+        <in-binding>
+            <bind name="name" type="string" export-name="name"/>
+        </in-binding>
+        <out-binding/>
+        <description>Custom decision based on a custom script.</description>
+        <position y="65.0" x="270.0"/>
+    </workflow-item>
+    <workflow-item name="item4" out-name="item0" type="task" comparator="0">
+        <display-name>A</display-name>
+        <script encoded="false">System.debug("wrong variable")</script>
+        <in-binding/>
+        <out-binding/>
+        <description>Simple task with custom script capability.</description>
+        <position y="22.21239073086629" x="409.9115044247788"/>
+    </workflow-item>
+    <workflow-item name="item5" out-name="item2" type="task" comparator="0">
+        <display-name>B</display-name>
+        <script encoded="false">System.debug("Good variable")</script>
+        <in-binding/>
+        <out-binding/>
+        <description>Simple task with custom script capability.</description>
+        <position y="75.30973586360966" x="407.25663716814165"/>
+    </workflow-item>
+    <presentation/>
+</ns2:workflow>
